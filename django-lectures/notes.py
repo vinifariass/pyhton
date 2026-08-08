@@ -1,3 +1,4 @@
+import random
 if 1 < 2:
     print("first block")
     if 20 < 3:
@@ -87,3 +88,48 @@ print(list(mapped_list))
 
 tweet = "Go Sports! #Sports"
 result = tweet.strip("#")
+
+def get_guess():
+
+    return input("what's your guess?")
+
+#GENERATE COMPUTER CODE TO GUESS THE NUMBER
+def generate_computer_code():
+    digits = [str(num) for num in range(10)]
+
+    # Shuffle the digits than grab the first three after the shuffle
+    random.shuffle(digits)
+    return digits[:3]
+
+def generate_clues(code,user_guess):
+    if code == user_guess:
+        return "CODE CRACKED!"
+
+    clues = []
+
+    for ind,num in enumerate(user_guess):
+        if num == code[ind]:
+            clues.append("Match")
+        elif num in code:
+            clues.append("Close")
+    if clues == []:
+        return "Nope!"
+
+
+def my_func():
+    print(x)
+
+my_func()
+print(x)
+
+name = "This is a global name!"
+
+def greet():
+    name = "Sammy"
+
+    def hello():
+        print("Hello " + name)
+
+    hello()
+
+greet()
