@@ -60,7 +60,54 @@ class Player:
         for x in range(3):
             war_cards.append(self.hand.remove_card())
         return war_cards
+    
+    def still_has_cards(self):
+        """Return True if the player has cards left, otherwise return False"""
+        return len(self.hand) != 0
             
 print("Welcome to War lets begin...")
 
-##Use the 3 class along with some logic to play a game of War!
+d = Deck()
+d.shuffle()
+half1, half2 = d.split_in_half()
+
+#create both players
+comp = Player("Computer", Hand(half1))
+name = input("Enter your name: ")
+user = Player(name, Hand(half2))
+
+total_rounds = 0
+war_count = 0
+while user.still_has_cards() and comp.still_has_cards():
+    total_rounds += 1
+    print("Time for a new round!")
+    print("Here are the current standings:")
+    print(user.name + " has the count: " + str(len(user.hand.cards)))
+    print(comp.name + " has the count: " + str(len(comp.hand.cards)))
+    print("Play a card!")
+    print("\n")
+    table_cards = []
+    user_card = user.play_card()
+    comp_card = comp.play_card()
+
+    table_cards.append(user_card)
+    table_cards.append(comp_card)
+
+    if comp_card[1] == user_card[1]:
+        war_count += 1
+
+        print("WAR!")
+
+        table_cards.extend(user.remove_war_cards())
+        table_cards.extend(comp.remove_war_cards())
+
+        if RANKS.index(comp_card[0]) < RANKS.index(user_card[0]):
+            user.hand.add(table_cards)
+        else:
+            comp.hand.add(table_cards)
+print(f"Game over, number of rounds: {total_rounds}")
+print("A war happened {war_count} times")
+print("Does the computer still have cards? " + str(comp.still_has_cards()))
+print(str(comp.still_has_cards()))
+print("Does the human player still have cards? " + str(user.still_has_cards()))
+print(str(user.still_has_cards()))
