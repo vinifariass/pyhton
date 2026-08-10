@@ -133,3 +133,11 @@ def greet():
     hello()
 
 greet()
+
+x = 50
+def func(x):
+    global x
+    x = 1000
+
+func(x)
+print(x)
