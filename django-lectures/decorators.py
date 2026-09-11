@@ -53,4 +53,3 @@ def new_decorator(func):
 @new_decorator
 def func_needs_decorator():
     print("THIS FUNCTION IS IN NEED OF A DECORATOR!")
-
