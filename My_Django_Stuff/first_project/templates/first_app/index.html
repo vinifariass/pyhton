@@ -9,27 +9,27 @@
 </head>
 <body>
     <h1>Hi welcome to Django level two!</h1>
+    <img src="{% static 'images/pexels.jpg' %}" alt="Django logo" width="300" height="300">
     <h2>Here are your access records:</h2>
     <div class= "djangotwo">
-        <%if access_records %>
+        {% if access_records %}
         <table>
             <thead>
                 <th> Site Name </th>
                 <th> Date </th>
             </thead>
             <tbody>
-                <% for record in access_records %>
+                {% for record in access_records %}
                 <tr>
                     <td> {{ record.name }} </td>
                     <td> {{ record.date }} </td>
                 </tr>
-                <% endfor %>
+                {% endfor %}
             </tbody>
         </table>
-        <% else %>
+        {% else %}
         <p> There are no access records in the database. </p>
-        <% endif %>
+        {% endif %}
 
-    <h3>{{ insert_me }}</h3>
 </body>
 </html>
