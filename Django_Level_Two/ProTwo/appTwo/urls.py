@@ -1,9 +1,11 @@
-from django.conf.urls import url
+from importlib.resources import path
+
+from django.urls import path
 from django.contrib import admin
 from appTwo import views
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
-    url(r'^users/$', views.users, name='users'),
-    url(r'^admin/', admin.site.urls),
+    path("", views.index, name="index"),
+    path("users/", views.users, name="users"),
+    path("admin/", admin.site.urls),
 ]
