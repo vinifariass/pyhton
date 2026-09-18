@@ -17,6 +17,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from basic_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path(r'^$', views.index, name='index'),
+    path(r'^basic_app/', views.basic_app, name='basic_app'),
 ]

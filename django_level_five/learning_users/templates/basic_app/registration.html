@@ -1,0 +1,23 @@
+{% extends 'basic_app/base.html' %}
+
+{% load staticfiles %}
+
+{% block body_block %}
+  {% if registered %}
+    <div class="alert alert-success" role="alert">
+      <h4 class="alert-heading">Registration Successful!</h4>
+      <p>You have been successfully registered.</p>
+    </div>
+  {% else %}
+    <div class="jumbotron">
+      <h1>Register Here</h1>
+      <h3>Fill out the form:</h3>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit" name="" value="Register">
+      </form>
+    </div>
+  {% endif %}
+{% endblock %}
